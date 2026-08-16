@@ -1,5 +1,28 @@
 /* Custom overrides untuk AutoCraft Garage - dibangun di atas vendor/css/style.css (template HVAC by Colorlib) */
 
+/* Vendor CSS positions .car-model with position:absolute (top:0; left:0) inside a
+   140px-reserved gutter, made for a short side label like "Model 2019" sitting next
+   to the big price on the same line. Our label ("Booking Servis Mulai Dari") is far
+   longer than that gutter, so it overflowed the reserved space and overlapped the
+   big price text below it. Switched to a normal stacked block instead. */
+.hero__text__price {
+  padding-left: 0;
+}
+
+.hero__text__price .car-model {
+  position: static;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.hero__text__price h2 {
+  line-height: 1.15;
+}
+
+.hero__text__title h2 {
+  line-height: 1.15;
+}
+
 .site-logo {
   display: inline-flex;
   align-items: center;
@@ -368,6 +391,104 @@
 .counter-num {
   display: inline-block;
   font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Hero "Booking Servis Cepat" widget — redesigned on the card structure/
+   spacing/shadow language of a Uiverse.io sign-in card (by nathann09), with
+   the original booking fields kept (vehicle type, service, schedule) rather
+   than turned into a login form. Scoped to .hero__tab__form only.
+   ========================================================================== */
+
+.hero__tab__form {
+  padding: 28px 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+}
+
+.hero__tab__form h2 {
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.hero__tab__form form .select-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 0;
+}
+
+.hero__tab__form form .select-list .select-list-item {
+  max-width: none;
+  flex: none;
+  margin: 0;
+  position: relative;
+}
+
+.hero__tab__form form .select-list .select-list-item:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+.hero__tab__form form .select-list .select-list-item p {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+/* Vendor CSS only sizes the JS-generated .nice-select replacement (width/height/
+   border). This project has no jQuery/nice-select, so the plain <select>/<input>
+   here had no width control and sized to their own content, overflowing past
+   their 50%-width grid cell and crowding the field next to it. */
+.select-list-item select,
+.select-list-item input[type='text'] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px 14px;
+  margin: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  color: #323232;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.select-list-item select:focus,
+.select-list-item input[type='text']:focus {
+  outline: none;
+  border-color: #dc2626;
+}
+
+@media (max-width: 480px) {
+  .hero__tab__form form .select-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero__tab__form .site-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 20px;
+  background: #dc2626;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+}
+
+.hero__tab__form .site-btn:hover {
+  background: #c01f1f;
 }
 
 @media (prefers-reduced-motion: reduce) {
